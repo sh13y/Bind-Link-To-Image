@@ -4,7 +4,7 @@ A modern web application that allows users to create smart image links with cust
 
 > 🧠 **Big Brain Move**: Ever wanted to make your Facebook friends click on something interesting? This is your secret weapon! Create eye-catching images that lead to your target destination. They'll never see it coming! 😏
 
-![Smart Image Link Generator](https://i.imgur.com/example.png)
+![Smart Image Link Generator](assets/screenshot.png)
 
 ## 🌟 Features
 
@@ -19,7 +19,7 @@ A modern web application that allows users to create smart image links with cust
 
 ## 🚀 Live Demo
 
-[Try it out here](https://your-deployed-url.com) (Don't worry, we won't tell anyone what you're up to! 🤫)
+[Try it out here](https://smartlink.isuru.eu.org/) (Don't worry, we won't tell anyone what you're up to! 🤫)
 
 ## 🛠️ Tech Stack
 
@@ -184,8 +184,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you need help or have questions (We're here to help you be sneaky! 🕵️‍♂️):
 
 1. Open an issue in the GitHub repository
-2. Contact: your-email@example.com
-3. Join our [Discord community](https://discord.gg/your-server)
+2. Contact: sh13y@proton.me
+3. Join our [Discord community](https://discord.gg/sh13y-chat)
 
 ## 🔄 Updates
 
