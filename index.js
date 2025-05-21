@@ -1,12 +1,10 @@
-const SUPABASE_URL = 'https://sdgstfytqxpqdqlfktab.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkZ3N0Znl0cXhwcWRxbGZrdGFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzMjg2MzUsImV4cCI6MjA1NTkwNDYzNX0.zlONQlkCAWqXBdCnpErUEqeOSIPxa1uv5I0LJHoACrs';
-
 const HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart Image Link Generator</title>
+  <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=xgmWILNhUFRB&format=png&color=000000">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -474,7 +472,7 @@ const HTML = `<!DOCTYPE html>
     </div>
     
     <div class="footer">
-      Smart Image Link Generator &copy; 2025
+      <div style="margin-top: 0.5rem; font-size: 0.75rem;">Made in ceylon with ❤️ by sh13y</div>
     </div>
   </div>
   
@@ -532,15 +530,15 @@ const HTML = `<!DOCTYPE html>
     });
     
     function previewImage(file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const preview = document.getElementById('imagePreview');
-        preview.src = e.target.result;
-        preview.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const preview = document.getElementById('imagePreview');
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
       }
-      reader.readAsDataURL(file);
-    }
-    
+
     // Handle form submission
     document.getElementById('uploadForm').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -557,7 +555,7 @@ const HTML = `<!DOCTYPE html>
       error.style.display = 'none';
       success.style.display = 'none';
       resultSection.style.display = 'none';
-      
+
       if (!imageInput.files[0]) {
         showError('Please select an image to continue');
         return;
@@ -572,28 +570,28 @@ const HTML = `<!DOCTYPE html>
         showError('Please enter a valid URL including http:// or https://');
         return;
       }
-      
+
       loading.style.display = 'flex';
       generateBtn.disabled = true;
-      
+
       try {
         const formData = new FormData();
         formData.append('image', imageInput.files[0]);
         formData.append('destination', destinationLink);
         formData.append('ogTitle', ogTitle);
         formData.append('ogDescription', ogDescription);
-        
+
         const response = await fetch('/upload', {
           method: 'POST',
           body: formData
         });
-        
+
         const data = await response.json();
-        
+
         if (!response.ok) {
           throw new Error(data.details || data.error || 'Upload failed');
         }
-        
+
         uploadedImageUrl = data.imageUrl;
         document.getElementById('generatedLink').value = uploadedImageUrl;
         resultSection.style.display = 'block';
@@ -620,7 +618,7 @@ const HTML = `<!DOCTYPE html>
         generateBtn.disabled = false;
       }
     });
-    
+
     function copyLink() {
       const linkInput = document.getElementById('generatedLink');
       linkInput.select();
@@ -635,7 +633,7 @@ const HTML = `<!DOCTYPE html>
       
       showSuccess('Link copied to clipboard!');
     }
-    
+
     function showError(message) {
       const error = document.getElementById('error');
       error.innerHTML = \`
@@ -673,8 +671,12 @@ const HTML = `<!DOCTYPE html>
 </body>
 </html>`;
 
-async function handleRequest(request) {
+async function handleRequest(request, env) {
   const url = new URL(request.url);
+  
+  // Use env variables instead of global constants
+  const SUPABASE_URL = env.SUPABASE_URL;
+  const SUPABASE_ANON_KEY = env.SUPABASE_ANON_KEY;
   
   // Serve the HTML file for GET requests
   if (request.method === 'GET') {
@@ -1002,7 +1004,7 @@ async function handleRequest(request) {
             </a>
           </div>
           <div class="footer">
-            Smart Image Link Generator
+            <div style="margin-top: 0.5rem; font-size: 0.75rem;">Made in ceylon with ❤️ by sh13y</div>
           </div>
         </body>
         </html>
@@ -1097,12 +1099,7 @@ async function handleRequest(request) {
   return new Response('Method not allowed', { status: 405 });
 }
 
-// For Cloudflare Workers
+// Update the export for Cloudflare Workers
 export default {
   fetch: handleRequest
 };
-
-// For Deno Deploy
-if (typeof Deno !== 'undefined') {
-  Deno.serve(handleRequest);
-} 

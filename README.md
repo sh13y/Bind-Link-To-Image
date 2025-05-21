@@ -21,18 +21,17 @@ A modern web application that allows users to create smart image links with cust
 ## 🛠️ Tech Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
-- **Backend**: Cloudflare Workers / Deno
+- **Backend**: Cloudflare Workers
 - **Database**: Supabase (PostgreSQL)
 - **Storage**: Supabase Storage
-- **Deployment**: Cloudflare Pages / Deno Deploy
 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have:
 
 1. A [Supabase](https://supabase.com) account
-2. A [Cloudflare](https://cloudflare.com) account (for deployment)
-3. Basic knowledge of JavaScript and web development
+2. A [Cloudflare](https://cloudflare.com) account
+3. [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed
 
 ## 🔧 Setup Instructions
 
@@ -61,56 +60,64 @@ create index image_links_public_id_idx on image_links(public_id);
    - File size limit: 5MB
    - Allowed mime types: image/*
 
-### 2. Environment Variables
+### 2. Cloudflare Workers Setup
 
-Create a `.env` file in your project root:
-
-```env
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-### 3. Local Development
-
-1. Clone the repository:
+1. Install Wrangler CLI:
 ```bash
-git clone https://github.com/yourusername/smart-image-link-generator.git
-cd smart-image-link-generator
+npm install -g wrangler
 ```
 
-2. Install dependencies (if using npm):
+2. Login to Cloudflare:
 ```bash
-npm install
+wrangler login
 ```
 
-3. Start the development server:
+3. Create a new worker:
 ```bash
-npm run dev
+wrangler init smart-image-link-generator
 ```
+
+4. Configure your worker by creating a `wrangler.toml` file:
+```toml
+name = "smart-image-link-generator"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# Add your environment variables here
+# SUPABASE_URL = "your_supabase_url"
+# SUPABASE_ANON_KEY = "your_supabase_anon_key"
+```
+
+### 3. Environment Variables
+
+Set up your environment variables in Cloudflare Workers:
+
+1. Go to Cloudflare Dashboard
+2. Navigate to Workers & Pages
+3. Select your worker
+4. Go to Settings > Variables
+5. Add the following variables:
+   - `SUPABASE_URL`: Your Supabase project URL
+   - `SUPABASE_ANON_KEY`: Your Supabase anonymous key
 
 ## 🚀 Deployment
 
-### Option 1: Cloudflare Pages
-
 1. Push your code to GitHub
-2. Go to Cloudflare Pages
-3. Create a new project
+2. Deploy using Wrangler:
+```bash
+wrangler deploy
+```
+
+Or deploy through Cloudflare Dashboard:
+1. Go to Workers & Pages
+2. Click "Create Application"
+3. Choose "Pages"
 4. Connect your GitHub repository
 5. Configure build settings:
-   - Build command: `npm run build` (if applicable)
-   - Build output directory: `dist` (if applicable)
-6. Add environment variables:
-   - `SUPABASE_URL`
-   - `SUPABASE_ANON_KEY`
-7. Deploy!
-
-### Option 2: Deno Deploy
-
-1. Install Deno CLI
-2. Deploy using Deno Deploy CLI:
-```bash
-deployctl deploy --project=your-project-name index.js
-```
+   - Build command: (leave empty)
+   - Build output directory: (leave empty)
+6. Deploy!
 
 ## 🔒 Security Considerations
 
@@ -174,8 +181,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you need help or have questions:
 
 1. Open an issue in the GitHub repository
-2. Contact: sh13y@proton.me
-3. Join our [Discord community](https://discord.gg/sh13y-server)
+2. Contact: your-email@example.com
+3. Join our [Discord community](https://discord.gg/your-server)
 
 ## 🔄 Updates
 
@@ -186,4 +193,4 @@ If you need help or have questions:
 
 ---
 
-Made with ❤️ by sh13y
+Made in with ❤️ by sh13y
