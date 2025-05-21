@@ -2,7 +2,7 @@
 
 A modern web application that allows users to create smart image links with custom destinations. When someone clicks on the image, they'll be redirected to your specified URL. Perfect for social media sharing, marketing campaigns, or creating engaging image-based links.
 
-![Smart Image Link Generator](https://i.imgur.com/example.png)
+![Smart Image Link Generator](assets/screenshot.png)
 
 ## 🌟 Features
 
@@ -16,7 +16,7 @@ A modern web application that allows users to create smart image links with cust
 
 ## 🚀 Live Demo
 
-[Try it out here](https://your-deployed-url.com)
+[Try it out here](https://smartlink.isuru.eu.org)
 
 ## 🛠️ Tech Stack
 
@@ -182,7 +182,7 @@ If you need help or have questions:
 
 1. Open an issue in the GitHub repository
 2. Contact: your-email@example.com
-3. Join our [Discord community](https://discord.gg/your-server)
+3. Join our [Discord community](https://discord.gg/sh13y-server)
 
 ## 🔄 Updates
 
