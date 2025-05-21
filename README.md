@@ -2,43 +2,46 @@
 
 A modern web application that allows users to create smart image links with custom destinations. When someone clicks on the image, they'll be redirected to your specified URL. Perfect for social media sharing, marketing campaigns, or creating engaging image-based links.
 
-![Smart Image Link Generator](assets/screenshot.png)
+> 🧠 **Big Brain Move**: Ever wanted to make your Facebook friends click on something interesting? This is your secret weapon! Create eye-catching images that lead to your target destination. They'll never see it coming! 😏
+
+![Smart Image Link Generator](https://i.imgur.com/example.png)
 
 ## 🌟 Features
 
-- **Modern UI/UX**: Beautiful, responsive design that works on all devices
-- **Drag & Drop**: Easy image upload with drag and drop support
-- **Custom Metadata**: Set custom titles and descriptions for your links
-- **QR Code Generation**: Automatically generates QR codes for easy sharing
-- **Mobile Optimized**: Fully responsive design with touch-friendly interactions
-- **Open Graph Support**: Perfect for social media sharing
-- **Fast Loading**: Optimized for quick loading and smooth performance
+- **Modern UI/UX**: Beautiful, responsive design that works on all devices (even your grandma's phone! 👵)
+- **Drag & Drop**: Easy image upload with drag and drop support (just like dragging your friends into your schemes 😈)
+- **Custom Metadata**: Set custom titles and descriptions for your links (make it look legit, you know? 😉)
+- **QR Code Generation**: Automatically generates QR codes for easy sharing (because scanning is cooler than typing! 📱)
+- **Mobile Optimized**: Fully responsive design with touch-friendly interactions (tap, tap, tap... gotcha! 👆)
+- **Open Graph Support**: Perfect for social media sharing (especially Facebook! They'll never suspect a thing 😏)
+- **Fast Loading**: Optimized for quick loading and smooth performance (speed is key when you're being sneaky! 🏃‍♂️)
+- **Stealth Mode**: Your friends won't know what hit them! 🎯
 
 ## 🚀 Live Demo
 
-[Try it out here](https://smartlink.isuru.eu.org)
+[Try it out here](https://your-deployed-url.com) (Don't worry, we won't tell anyone what you're up to! 🤫)
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
-- **Backend**: Cloudflare Workers
-- **Database**: Supabase (PostgreSQL)
-- **Storage**: Supabase Storage
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla) (No fancy frameworks, just pure mischief! 🎭)
+- **Backend**: Cloudflare Workers (Fast and furious, just like your clickbait! ⚡)
+- **Database**: Supabase (PostgreSQL) (Storing your secrets safely! 🔒)
+- **Storage**: Supabase Storage (Where all the good stuff lives! 🏠)
 
 ## 📋 Prerequisites
 
-Before you begin, ensure you have:
+Before you begin your journey of digital trickery, ensure you have:
 
-1. A [Supabase](https://supabase.com) account
-2. A [Cloudflare](https://cloudflare.com) account
-3. [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed
+1. A [Supabase](https://supabase.com) account (They're cool, we promise! 😎)
+2. A [Cloudflare](https://cloudflare.com) account (For that extra layer of sneakiness! 🕵️‍♂️)
+3. [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed (The magic wand for deployment! 🪄)
 
 ## 🔧 Setup Instructions
 
 ### 1. Database Setup (Supabase)
 
-1. Create a new Supabase project
-2. Create the following table in your database:
+1. Create a new Supabase project (Your secret lair! 🏰)
+2. Create the following table in your database (The blueprint of your master plan! 📋):
 
 ```sql
 create table image_links (
@@ -51,65 +54,65 @@ create table image_links (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- Create an index for faster lookups
+-- Create an index for faster lookups (Speed is your friend! 🏃‍♂️)
 create index image_links_public_id_idx on image_links(public_id);
 ```
 
 3. Create a new storage bucket named `images` with the following settings:
-   - Public bucket
-   - File size limit: 5MB
-   - Allowed mime types: image/*
+   - Public bucket (Let everyone see your masterpieces! 🎨)
+   - File size limit: 5MB (Keep it light, keep it sneaky! 🎯)
+   - Allowed mime types: image/* (Only the good stuff! 🖼️)
 
 ### 2. Cloudflare Workers Setup
 
-1. Install Wrangler CLI:
+1. Install Wrangler CLI (Your trusty sidekick! 🦸‍♂️):
 ```bash
 npm install -g wrangler
 ```
 
-2. Login to Cloudflare:
+2. Login to Cloudflare (Time to get serious! 🎭):
 ```bash
 wrangler login
 ```
 
-3. Create a new worker:
+3. Create a new worker (Your digital minion! 🤖):
 ```bash
 wrangler init smart-image-link-generator
 ```
 
-4. Configure your worker by creating a `wrangler.toml` file:
+4. Configure your worker by creating a `wrangler.toml` file (The recipe for success! 📝):
 ```toml
 name = "smart-image-link-generator"
 main = "index.js"
 compatibility_date = "2024-01-01"
 
 [vars]
-# Add your environment variables here
+# Add your environment variables here (Your secret ingredients! 🧪)
 # SUPABASE_URL = "your_supabase_url"
 # SUPABASE_ANON_KEY = "your_supabase_anon_key"
 ```
 
 ### 3. Environment Variables
 
-Set up your environment variables in Cloudflare Workers:
+Set up your environment variables in Cloudflare Workers (The keys to your kingdom! 🔑):
 
 1. Go to Cloudflare Dashboard
 2. Navigate to Workers & Pages
 3. Select your worker
 4. Go to Settings > Variables
 5. Add the following variables:
-   - `SUPABASE_URL`: Your Supabase project URL
-   - `SUPABASE_ANON_KEY`: Your Supabase anonymous key
+   - `SUPABASE_URL`: Your Supabase project URL (Where the magic happens! ✨)
+   - `SUPABASE_ANON_KEY`: Your Supabase anonymous key (Your secret handshake! 🤝)
 
 ## 🚀 Deployment
 
-1. Push your code to GitHub
-2. Deploy using Wrangler:
+1. Push your code to GitHub (Share your brilliance with the world! 🌍)
+2. Deploy using Wrangler (Release the kraken! 🐙):
 ```bash
 wrangler deploy
 ```
 
-Or deploy through Cloudflare Dashboard:
+Or deploy through Cloudflare Dashboard (The easy way! 🛣️):
 1. Go to Workers & Pages
 2. Click "Create Application"
 3. Choose "Pages"
@@ -117,23 +120,23 @@ Or deploy through Cloudflare Dashboard:
 5. Configure build settings:
    - Build command: (leave empty)
    - Build output directory: (leave empty)
-6. Deploy!
+6. Deploy! (Time to catch some clicks! 🎯)
 
 ## 🔒 Security Considerations
 
-1. **Rate Limiting**: Implement rate limiting to prevent abuse
-2. **File Validation**: Validate file types and sizes
-3. **URL Validation**: Ensure destination URLs are valid and safe
-4. **CORS**: Configure CORS headers appropriately
-5. **Environment Variables**: Never commit sensitive keys to version control
+1. **Rate Limiting**: Implement rate limiting to prevent abuse (Don't be too greedy! 🎭)
+2. **File Validation**: Validate file types and sizes (Keep it clean, keep it sneaky! 🧹)
+3. **URL Validation**: Ensure destination URLs are valid and safe (No broken dreams! 💫)
+4. **CORS**: Configure CORS headers appropriately (Cross the streams safely! 🌊)
+5. **Environment Variables**: Never commit sensitive keys to version control (Your secrets are safe with us! 🤫)
 
 ## 📝 API Documentation
 
 ### Endpoints
 
-1. **GET /** - Serves the main application
-2. **GET /i/:publicId** - Serves the redirect page
-3. **POST /upload** - Handles image uploads
+1. **GET /** - Serves the main application (The trap is set! 🪤)
+2. **GET /i/:publicId** - Serves the redirect page (The moment of truth! 🎭)
+3. **POST /upload** - Handles image uploads (The bait is ready! 🎣)
 
 ### Request/Response Examples
 
@@ -159,38 +162,38 @@ Response:
 
 ## 🤝 Contributing
 
-1. Fork the repository
+1. Fork the repository (Join the dark side! 😈)
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+5. Open a Pull Request (Let's make this even more sneaky! 🕵️‍♂️)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. (We're sneaky, but we're not monsters! 😇)
 
 ## 🙏 Acknowledgments
 
-- [Supabase](https://supabase.com) for the backend infrastructure
-- [Cloudflare](https://cloudflare.com) for the deployment platform
-- [Inter](https://rsms.me/inter/) for the beautiful font
-- [QRCode.js](https://github.com/davidshimjs/qrcodejs) for QR code generation
+- [Supabase](https://supabase.com) for the backend infrastructure (The unsung hero! 🦸‍♂️)
+- [Cloudflare](https://cloudflare.com) for the deployment platform (The speed demon! ⚡)
+- [Inter](https://rsms.me/inter/) for the beautiful font (Making it look legit! 🎨)
+- [QRCode.js](https://github.com/davidshimjs/qrcodejs) for QR code generation (The modern way to share! 📱)
 
 ## 📞 Support
 
-If you need help or have questions:
+If you need help or have questions (We're here to help you be sneaky! 🕵️‍♂️):
 
 1. Open an issue in the GitHub repository
 2. Contact: your-email@example.com
-3. Join our [Discord community](https://discord.gg/sh13y-server)
+3. Join our [Discord community](https://discord.gg/your-server)
 
 ## 🔄 Updates
 
-- **v1.0.0** - Initial release
-- **v1.1.0** - Added QR code generation
-- **v1.2.0** - Improved mobile responsiveness
-- **v1.3.0** - Added drag and drop support
+- **v1.0.0** - Initial release (The beginning of something sneaky! 🎭)
+- **v1.1.0** - Added QR code generation (Now with extra sneakiness! 🎯)
+- **v1.2.0** - Improved mobile responsiveness (Even more ways to catch them! 📱)
+- **v1.3.0** - Added drag and drop support (Making it easier to be sneaky! 🎨)
 
 ---
 
-Made in with ❤️ by sh13y
+Made in ceylon with ❤️ by sh13y (The mastermind behind all this sneaky business! 🧠)
