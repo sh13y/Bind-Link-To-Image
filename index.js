@@ -3,19 +3,10 @@ const HTML = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="Content-Language" content="si" />
   <title>Smart Image Link Generator</title>
   <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=xgmWILNhUFRB&format=png&color=000000">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Iskoola+Pota&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Iskoola Pota';
-      src: url('https://fonts.googleapis.com/css2?family=Iskoola+Pota&display=swap');
-      font-display: swap;
-    }
-    
     :root {
       --primary: #6366f1;
       --primary-dark: #4f46e5;
@@ -41,7 +32,7 @@ const HTML = `<!DOCTYPE html>
     
     body {
       background: var(--bg);
-      font-family: 'Iskoola Pota', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text);
       margin: 0;
       min-height: 100vh;
@@ -510,8 +501,7 @@ const HTML = `<!DOCTYPE html>
     </div>
     
     <div class="footer">
-      <div style="margin-top: 0.5rem; font-size: 0.75rem; font-family: 'Iskoola Pota', sans-serif;">ශ්‍රී ලංකාවේ සාදන ලද ❤️ sh13y විසින්</div>
-      <div style="margin-top: 0.5rem; font-size: 0.75rem; font-family: 'Iskoola Pota', sans-serif;">උපරිම පළල 800px සහ උපරිම උස 3,000px වන රූප ගොනු පමණක් භාවිතා කරන්න</div>
+      <div style="margin-top: 0.5rem; font-size: 0.75rem;">Made in ceylon with ❤️ by sh13y</div>
     </div>
   </div>
   
@@ -756,18 +746,6 @@ async function handleRequest(request, env) {
         <!DOCTYPE html>
         <html lang="en">
         <head>
-        <!-- Open Link In New Tab -->
-          <!--<script>
-                    window.onload = function () {
-                      function redirect() {
-                        window.open("https://www.profitableratecpm.com/gi69qn9h63?key=c0c07a810115598cc4d7921cbb3d6f2e", "_blank"); // Change to your URL
-                        document.body.removeEventListener("click", redirect); // Ensures it runs only once
-                      }
-
-                      document.body.addEventListener("click", redirect);
-                    };
-                  </script>-->
-          <!-- Open Link In New Tab -->
           <meta property="og:type" content="article" />
           <meta property="og:title" content="${title}" />
           <meta property="og:description" content="${description}" />
@@ -779,7 +757,8 @@ async function handleRequest(request, env) {
           <meta property="og:image:alt" content="${title}" />
           <meta property="og:url" content="${url.origin}/i/${publicId}" />
           <meta property="og:site_name" content="Smart Image Link" />
-          <meta property="og:locale" content="si_LK" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:updated_time" content="${new Date().toISOString()}" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:image" content="${imageUrl}" />
           <meta name="robots" content="noindex, nofollow" />
@@ -787,20 +766,6 @@ async function handleRequest(request, env) {
           <title>${title}</title>
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
           <style>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-          <meta http-equiv="Content-Language" content="si" />
-          <title>Smart Image Link Generator</title>
-          <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=xgmWILNhUFRB&format=png&color=000000">
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-          <link href="https://fonts.googleapis.com/css2?family=Iskoola+Pota&display=swap" rel="stylesheet">
-          <style>
-          @font-face {
-          font-family: 'Iskoola Pota';
-          src: url('https://fonts.googleapis.com/css2?family=Iskoola+Pota&display=swap');
-          font-display: swap;
-        }
             :root {
               --primary: #6366f1;
               --primary-dark: #4f46e5;
@@ -1085,7 +1050,7 @@ async function handleRequest(request, env) {
             </a>
           </div>
           <div class="footer">
-            <div style="margin-top: 0.5rem; font-size: 0.75rem;">Made in Sri Lanka with ❤️ by sh13y</div>
+            <div style="margin-top: 0.5rem; font-size: 0.75rem;">Made in ceylon with ❤️ by sh13y</div>
           </div>
         </body>
         </html>
